@@ -1,0 +1,16 @@
+/**
+ * 加载组件 样式
+ */
+@import "../../../styles/theme.less";
+
+:global {
+  .boilerplate-loading-page {
+    height: 100%;
+    background-color: @fill-base;
+    overflow: hidden;
+
+    .boilerplate-load + .boilerplate-load {
+      margin-top: 30 * @hd;
+    }
+  }
+}

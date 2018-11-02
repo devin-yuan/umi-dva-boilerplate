@@ -1,0 +1,17 @@
+/**
+ * 文本溢出
+ */
+
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 控制文本行数
+.lines-text-overflow(@line: 1) {
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

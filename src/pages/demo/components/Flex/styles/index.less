@@ -1,0 +1,29 @@
+/**
+ * Flex 示例样式
+ */
+@import "../../../../../styles/theme.less";
+
+.itemBox {
+  padding: 15px;
+}
+
+.item {
+  background-color: #ff0;
+  .size(100%, 300px);
+
+  & > div {
+    padding: 10px;
+
+    &:first-child {
+      background-color: #f00;
+    }
+
+    &:nth-child(2) {
+      background-color: #0f0;
+    }
+
+    &:last-child {
+      background-color: #00f;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+/**
+ * 加载组件 样式
+ */
+@import "../../../styles/theme.less";
+
+:global {
+  .boilerplate-loading {
+    padding: @v-spacing-lg;
+    height: 100%;
+    background-color: @fill-base;
+
+    & > div + div {
+      margin-top: @v-spacing-md;
+    }
+
+    .cell + .cell {
+      margin-left: @h-spacing-md;
+    }
+
+    .cell :local {
+      display: inline-block;
+      height: 14 * @hd;
+      border-radius: @radius-xs;
+      background: linear-gradient(90deg,rgba(207,216,220,.2),rgba(207,216,220,.4),rgba(207,216,220,.2));
+      background-size: 600% 600%;
+      animation: card-loading 1.4s ease infinite;
+    }
+
+    .cell {
+      &.a { width: 100%; }
+
+      &.b { width: 90%; }
+
+      &.c { width: 80%; }
+
+      &.d { width: 70%; }
+
+      &.e { width: 60%; }
+
+      &.f { width: 50%; }
+
+      &.g { width: 40%; }
+
+      &.h { width: 30%; }
+
+      &.i { width: 20%; }
+
+      &.j { width: 10%; }
+    }
+  }
+}
+
+@keyframes card-loading {
+  0%,
+  100% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}

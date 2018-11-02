@@ -1,0 +1,54 @@
+/**
+ * 脚手架样式
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+// body重置
+body {
+  font-size: @font-size-base;
+  font-family: @font-family-base;
+  line-height: @line-height-base;
+  color: @color-text-base;
+  background-color: @fill-body;
+}
+
+// 重置相关元素字体
+input,
+button,
+select,
+textarea {
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+}
+
+// 链接
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+// 图片
+img {
+  vertical-align: middle;
+}

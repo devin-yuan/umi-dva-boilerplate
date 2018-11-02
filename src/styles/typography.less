@@ -1,0 +1,51 @@
+/**
+ * 排版
+ */
+
+/* 标题 */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-size: @font-size-heading;
+  font-weight: 500;
+  color: @color-text-base;
+}
+
+/* 主体文本 */
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* 无序/有序列表 */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+:global {
+  /* 对齐 */
+  .text-left { text-align: left; }
+  .text-right { text-align: right; }
+  .text-center { text-align: center; }
+  .text-justify { text-align: justify; }
+  .text-nowrap { white-space: nowrap; }
+
+  /* 字体转换 */
+  .text-lowercase { text-transform: lowercase; }
+  .text-uppercase { text-transform: uppercase; }
+  .text-capitalize { text-transform: capitalize; }
+}
