@@ -12,3 +12,7 @@ umi内置一下模块，无需格外安装。
 - @babel/polyfill
 - path-to-regexp
 - moment
+
+## License
+
+[MIT](LICENSE)
