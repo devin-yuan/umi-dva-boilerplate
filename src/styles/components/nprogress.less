@@ -1,0 +1,67 @@
+/**
+ * Nprogress 组件样式
+ */
+
+/* Make clicks pass-through */
+#nprogress {
+  pointer-events: none;
+
+  .bar {
+    position: fixed;
+    z-index: 1031;
+    top: 0;
+    left: 0;
+    background-color: @brand-primary;
+    .size(100%, (2 * @hd));
+  }
+
+  /* Fancy blur effect */
+  .peg {
+    display: block;
+    position: absolute;
+    right: 0;
+    .size((100 * @hd), 100%);
+    box-shadow: 0 0 (10 * @hd) @brand-primary, 0 0 (5 * @hd) @brand-primary;
+    opacity: 1.0;
+    transform: rotate(3deg) translate(0px, (-4 * @hd));
+  }
+
+  /* Remove these to get rid of the spinner */
+  .spinner {
+    display: block;
+    position: fixed;
+    z-index: 1031;
+    top: 15px;
+    right: 15px;
+  }
+
+  .spinner-icon {
+    .square(18 * @hd);
+    box-sizing: border-box;
+    border: (2 * @hd) solid transparent;
+    border-top-color: @brand-primary;
+    border-left-color: @brand-primary;
+    border-radius: 50%;
+    animation: nprogress-spinner 400ms linear infinite;
+  }
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@keyframes nprogress-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
