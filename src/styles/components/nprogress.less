@@ -11,7 +11,7 @@
     z-index: 1031;
     top: 0;
     left: 0;
-    background-color: @brand-primary;
+    background-color: @nprogress-color;
     .size(100%, (2 * @hd));
   }
 
@@ -21,7 +21,7 @@
     position: absolute;
     right: 0;
     .size((100 * @hd), 100%);
-    box-shadow: 0 0 (10 * @hd) @brand-primary, 0 0 (5 * @hd) @brand-primary;
+    box-shadow: 0 0 (10 * @hd) @nprogress-color, 0 0 (5 * @hd) @nprogress-color;
     opacity: 1.0;
     transform: rotate(3deg) translate(0px, (-4 * @hd));
   }
@@ -39,8 +39,8 @@
     .square(18 * @hd);
     box-sizing: border-box;
     border: (2 * @hd) solid transparent;
-    border-top-color: @brand-primary;
-    border-left-color: @brand-primary;
+    border-top-color: @nprogress-color;
+    border-left-color: @nprogress-color;
     border-radius: 50%;
     animation: nprogress-spinner 400ms linear infinite;
   }

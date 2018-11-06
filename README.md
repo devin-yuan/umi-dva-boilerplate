@@ -1,6 +1,6 @@
 # umi-dva-boilerplate
 
-基于[UmiJS](https://umijs.org/)和[DvaJS](https://dvajs.com/)搭建的客户端渲染 - 通用脚手架
+基于 [UmiJS](https://umijs.org/) 和 [DvaJS](https://dvajs.com/) 搭建的客户端渲染 - 通用脚手架
 
 ## 中间件
 
@@ -20,7 +20,7 @@
 |名称|备注|
 |----|----|
 |`babel-eslint`|用于 ESLint 的 Babel 解析器的包装器。[更多](https://github.com/babel/babel-eslint)|
-|`cross-env`|设定环境变量的工具。[更多](https://github.com/kentcdodds/cross-env)|
+|`cross-env`|设定环境变量的工具。[更多](https://github.com/kentcdodds/cross-env)|
 |`eslint`|语法规则和代码风格的检查工具。[更多](https://github.com/eslint/eslint)|
 |`eslint-config-umi`|UmiJS 为 ESlint 配套的一些规则。[更多](https://www.npmjs.com/package/eslint-config-umi)|
 |`eslint-plugin-flowtype`|Flow type 为 ESLint 制定的规则。[更多](https://github.com/gajus/eslint-plugin-flowtype)|
