@@ -1,6 +1,7 @@
 /**
  * 子元素宽度设置
  */
+
 import React from 'react';
 import { Tabs } from 'antd-mobile';
 import styles from './styles/index.less';

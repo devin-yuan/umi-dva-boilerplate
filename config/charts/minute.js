@@ -1,6 +1,7 @@
 /**
  * 分时图配置
  */
+
 import echarts from 'echarts';
 import moment from 'moment';
 import numeral from 'numeral';

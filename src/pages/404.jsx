@@ -1,6 +1,7 @@
 /**
  * 404页面
  */
+
 import React, { PureComponent } from 'react';
 import router from 'umi/router';
 import classNames from 'classnames';

@@ -1,6 +1,7 @@
 /**
  * 图表通用配置项
  */
+
 import { adaptRem } from 'utils';
 
 export default {

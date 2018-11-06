@@ -1,6 +1,7 @@
 /**
  * 加载图标
  */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import './styles/icon.less';

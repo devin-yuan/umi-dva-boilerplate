@@ -1,6 +1,7 @@
 /**
  * title: 首页
  */
+
 import React, { PureComponent } from 'react';
 import router from 'umi/router';
 import { List } from 'antd-mobile';

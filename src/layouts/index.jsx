@@ -1,6 +1,7 @@
 /**
  * 全局Layout
  */
+
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withRouter from 'umi/withRouter';
