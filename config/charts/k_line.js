@@ -1,6 +1,7 @@
 /**
  * K线图配置
  */
+
 import { adaptRem } from 'utils';
 import commonConfig from './common';
 import apiResult from 'config/data/k_line.json';

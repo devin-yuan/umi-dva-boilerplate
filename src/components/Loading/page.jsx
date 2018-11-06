@@ -1,6 +1,7 @@
 /**
  * 页面过场加载动画
  */
+
 import React from 'react';
 import './styles/page.less';
 

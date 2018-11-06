@@ -1,6 +1,7 @@
 /**
  * 通用配置
  */
+
 const commonConfig = {
   env: process.env.UMI_ENV || 'local', // 当前项目的环境变量
   title: 'Boilerplate with UmiJS & DvaJS', // 网站默认标题

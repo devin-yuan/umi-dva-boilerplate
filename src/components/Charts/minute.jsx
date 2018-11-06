@@ -1,6 +1,7 @@
 /**
  * 分时图
  */
+
 import React, { PureComponent } from 'react';
 import ReactEcharts from 'echarts-for-react';
 import { minuteConfig } from 'config/charts';

@@ -1,12 +1,16 @@
 /**
- * umi配置
- * Doc: https://umijs.org/zh/plugin/umi-plugin-react.html#%E9%85%8D%E7%BD%AE%E9%A1%B9
+ * UmiJS 配置
+ * 配置文档：https://umijs.org/zh/config/
  */
 import commonConfig from './config/config.common';
 import themeConfig from './config/config.theme';
 
 export default {
   plugins: [
+    /*
+     * 插件：umi-plugin-react
+     * 配置文档：https://umijs.org/zh/plugin/umi-plugin-react.html
+     */
     ['umi-plugin-react', {
       dva: {
         immer: true, // 是否启用 dva-immer
@@ -21,7 +25,6 @@ export default {
           /styles/,
         ],
       },
-      polyfills: ['ie9'],
       dynamicImport: !commonConfig.routerTransition ? {
         loadingComponent: 'components/Loading/page', // 配置过场组件
       } : false,
@@ -29,7 +32,7 @@ export default {
       pwa: false,
       hd: commonConfig.mobile, // 开启高清方案
       fastClick: commonConfig.mobile, // 移动端下启用 fastClick
-      hardSource: false,
+      hardSource: false, // 通过 hard-source-webpack-plugin 开启 webpack 缓存，二次启动时间减少 80%。推荐非 windows 电脑使用，windows 下由于大文件 IO 比较慢，可自行决定是否启用。
       // 开启 title 插件，设置 HTML title
       title: {
         defaultTitle: commonConfig.title,
@@ -38,9 +41,14 @@ export default {
       },
     }],
   ],
+  hash: true,
+  targets: {
+    ie: 9,
+  },
   context: {
     mobile: commonConfig.mobile, // 告诉模板，是否为移动端项目
   },
+  /* ---------- 以下为 webpack 的配置 ---------- */
   theme: themeConfig(), // 主题配置
   define: commonConfig.globalVariable, // 抛出全局变量
   // 简化文件目录 url
@@ -60,4 +68,5 @@ export default {
       },
     ],
   ],
-}
+  ignoreMomentLocale: true, // 忽略 moment 的 locale 文件，用于减少尺寸。
+};

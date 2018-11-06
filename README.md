@@ -13,7 +13,7 @@
 |`echarts-for-react`|一个简单的 Echarts(v3.0 & v4.0) 的 React 封装。[更多](https://github.com/hustcc/echarts-for-react)|
 |`nprogress`|页面加载进度条。[更多](https://github.com/rstacruz/nprogress)|
 |`numeral`|用于格式化和操作数字的 JavaScript 库。[更多](https://github.com/adamwdraper/Numeral-js)|
-|`react-transition-group`|在 React 组件进入或离开 DOM 时执行动画的简单方法。[更多](https://github.com/reactjs/react-transition-group)|
+|`react-transition-group`|在 React 组件进入或离开 DOM 时执行动画的简单方法。[更多](https://github.com/reactjs/react-transition-group)|
 
 **devDependencies**
 
@@ -31,7 +31,7 @@
 |`less-vars-to-js`|从文件内容中读取 Less 变量并将其作为 JavaScript 对象返回。[更多](https://github.com/michaeltaranto/less-vars-to-js)|
 |`lint-staged`|[更多](https://github.com/okonet/lint-staged)|
 |`umi`|可插拔的企业级 React 应用框架。[更多](https://github.com/umijs/umi)|
-|`umi-plugin-react`|[更多](https://www.npmjs.com/package/umi-plugin-react)|
+|`umi-plugin-react`|UmiJS 封装的一个插件集，包含 13 个常用的进阶功能。[更多](https://github.com/umijs/umi/tree/master/packages/umi-plugin-react)|
 
 **UmiJS内置模块 (无需格外安装)**
 

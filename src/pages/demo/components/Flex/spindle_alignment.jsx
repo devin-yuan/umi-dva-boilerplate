@@ -1,6 +1,7 @@
 /**
  * 主轴对齐方式
  */
+
 import React from 'react';
 import { Tabs } from 'antd-mobile';
 import styles from './styles/index.less';

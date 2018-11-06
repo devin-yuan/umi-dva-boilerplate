@@ -1,6 +1,7 @@
 /**
  * 加载组件
  */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import './styles/index.less';

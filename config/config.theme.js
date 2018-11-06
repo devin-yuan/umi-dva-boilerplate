@@ -1,6 +1,7 @@
 /**
  * 主题配置
  */
+
 const fs = require('fs');
 const path = require('path');
 const lessToJs = require('less-vars-to-js');
