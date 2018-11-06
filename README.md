@@ -1,6 +1,6 @@
 # umi-dva-boilerplate
 
-基于umi和dva搭建的客户端渲染 - 通用脚手架
+基于[UmiJS](https://umijs.org/)和[DvaJS](https://dvajs.com/)搭建的客户端渲染 - 通用脚手架
 
 ## 中间件
 
