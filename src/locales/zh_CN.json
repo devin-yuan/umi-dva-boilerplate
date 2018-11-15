@@ -1,0 +1,8 @@
+{
+  "app.language.en_US": "英文",
+  "app.language.zh_CN": "中文简体",
+  "app.language.zh_TW": "中文繁体",
+  "app.page.setting.title": "设置",
+  "app.page.setting.language.title": "切换语言",
+  "app.page.setting.language.time": "当前时间：{time}"
+}

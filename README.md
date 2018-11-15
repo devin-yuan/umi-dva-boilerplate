@@ -13,6 +13,8 @@
 |`echarts-for-react`|一个简单的 Echarts(v3.0 & v4.0) 的 React 封装。[更多](https://github.com/hustcc/echarts-for-react)|
 |`nprogress`|页面加载进度条。[更多](https://github.com/rstacruz/nprogress)|
 |`numeral`|用于格式化和操作数字的 JavaScript 库。[更多](https://github.com/adamwdraper/Numeral-js)|
+|`react-helmet`|设置 HTML head 信息。[更多](https://github.com/nfl/react-helmet)|
+|`react-intl-universal`|阿里出的 React 多语言插件。[更多](https://github.com/alibaba/react-intl-universal)|
 |`react-transition-group`|在 React 组件进入或离开 DOM 时执行动画的简单方法。[更多](https://github.com/reactjs/react-transition-group)|
 
 **devDependencies**
@@ -47,6 +49,7 @@
 |`@babel/polyfill`|提供完整 ES2015+ 环境所需的 polyfill。[更多](https://babeljs.io/)|
 |`path-to-regexp`|将路径字符串（例如`/user/:name`）转换为正则表达式。[更多](https://github.com/pillarjs/path-to-regexp)|
 |`moment`|在 JavaScript 中解析，验证，操作和显示日期。[更多](https://github.com/moment/moment)|
+|`react-intl`|React 多语言支持。[更多](https://github.com/yahoo/react-intl)|
 
 ## License
 

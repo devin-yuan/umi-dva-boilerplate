@@ -59,6 +59,7 @@ export default {
     services: `${__dirname}/src/services`,
     styles: `${__dirname}/src/styles`,
     utils: `${__dirname}/src/utils`,
+    locales: `${__dirname}/src/locales`,
   },
   extraBabelPlugins: [
     [

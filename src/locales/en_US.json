@@ -1,0 +1,8 @@
+{
+  "app.language.en_US": "English",
+  "app.language.zh_CN": "Chinese simplified",
+  "app.language.zh_TW": "Chinese traditional",
+  "app.page.setting.title": "Settings",
+  "app.page.setting.language.title": "Switch language",
+  "app.page.setting.language.time": "Current time: {time}"
+}
