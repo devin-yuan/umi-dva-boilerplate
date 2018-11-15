@@ -19,7 +19,7 @@ const splitData = (rawData) => {
   return {
     categoryData: categoryData,
     values: values,
-    volumes: volumes
+    volumes: volumes,
   };
 }
 
@@ -141,8 +141,7 @@ export default {
       axisPointer: {
         z: 100
       }
-    },
-    {
+    }, {
       type: 'category',
       gridIndex: 1,
       data: data.categoryData,
@@ -154,7 +153,7 @@ export default {
       axisLabel: { show: false },
       splitNumber: 20,
       min: 'dataMin',
-      max: 'dataMax'
+      max: 'dataMax',
       // axisPointer: {
       //     label: {
       //         formatter: function (params) {
@@ -167,7 +166,7 @@ export default {
       //         }
       //     }
       // }
-    }
+    },
   ],
   yAxis: [{
     scale: true,
@@ -204,15 +203,14 @@ export default {
       xAxisIndex: [0, 1],
       start: 98,
       end: 100
-    },
-    {
+    }, {
       show: false,
       xAxisIndex: [0, 1],
       type: 'slider',
       top: '85%',
       start: 98,
       end: 100
-    }
+    },
   ],
   series: [
     {

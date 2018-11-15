@@ -8,9 +8,9 @@ import withRouter from 'umi/withRouter';
 import { connect } from 'dva';
 import commonConfig from 'config/config.common';
 import NProgress from 'nprogress';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { LocaleProvider } from 'antd-mobile';
-import enUS from 'antd-mobile/lib/locale-provider/en_US';
+import { getAntDesignLang } from 'utils/i18n';
 
 class BasicLayout extends PureComponent {
   constructor(props) {
@@ -29,7 +29,13 @@ class BasicLayout extends PureComponent {
   }
 
   render() {
-    const { children, loading, location } = this.props;
+    const {
+      children,
+      loading,
+      location,
+      language,
+    } = this.props;
+    const antLocale = getAntDesignLang(language);
 
     // 不显示滚动条边上那个转的小圈圈
     NProgress.configure({ showSpinner: false });
@@ -46,7 +52,7 @@ class BasicLayout extends PureComponent {
 
     return (
       <Fragment>
-        <LocaleProvider locale={enUS}>
+        <LocaleProvider locale={antLocale}>
           {commonConfig.mobile && commonConfig.routerTransition ? (
             <TransitionGroup>
               <CSSTransition
@@ -68,8 +74,10 @@ BasicLayout.propTypes = {
   location: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
   loading: PropTypes.object.isRequired,
+  language: PropTypes.string.isRequired,
 };
 
-export default connect(({ loading }) => ({
+export default connect(({ loading, global }) => ({
   loading,
+  language: global.language,
 }))(withRouter(BasicLayout));

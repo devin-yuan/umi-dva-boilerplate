@@ -19,3 +19,93 @@ export const adaptRem = (val, unit = false) => {
 
   return unit ? `${val}px` : val;
 };
+
+/**
+ * localStorage 处理方法
+ * @param type: 要做什么操作
+ * @param key: 要处理的key
+ * @param value: 要存的值
+ */
+export const handleLocalStorage = (type, key, value) => {
+  let result = null;
+
+  switch (type) {
+    case 'set':
+      window.localStorage.setItem(key, value);
+
+      break;
+    case 'get':
+      result = window.localStorage.getItem(key);
+
+      break;
+    case 'remove':
+      window.localStorage.removeItem(key);
+
+      break;
+    default:
+      break;
+  }
+
+  return result;
+};
+
+/**
+ * sessionStorage 处理方法
+ * @param type: 要做什么操作
+ * @param key: 要处理的key
+ * @param value: 要存的值
+ */
+export const handleSessionStorage = (type, key, value) => {
+  let result = null;
+
+  switch (type) {
+    case 'set':
+      window.sessionStorage.setItem(key, value);
+
+      break;
+    case 'get':
+      result = window.sessionStorage.getItem(key);
+
+      break;
+    case 'remove':
+      window.sessionStorage.removeItem(key);
+
+      break;
+    default:
+      break;
+  }
+
+  return result;
+};
+
+/**
+ * 拆分数组
+ * @param array: 要拆分的数组
+ * @param num: 一组的个数
+ */
+export const splitArray = (array, num = 1) => {
+  const result = [];
+
+  let temp = [];
+  let key = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    if (i % num === 0) {
+      temp = [];
+
+      for (let j = 0; j < num; j++) {
+        if (array[i + j] === undefined) {
+          continue; // eslint-disable-line
+        } else {
+          temp[j] = array[i + j];
+        }
+      }
+
+      result[key] = temp;
+
+      key++;
+    }
+  }
+
+  return result;
+};

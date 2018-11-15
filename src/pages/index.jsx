@@ -4,6 +4,7 @@
 
 import React, { PureComponent } from 'react';
 import router from 'umi/router';
+import intl from 'react-intl-universal';
 import { List } from 'antd-mobile';
 
 import Navigation from 'components/Navigation';
@@ -22,6 +23,14 @@ class Home extends PureComponent {
             }}
           >
             示例中心
+          </Item>
+          <Item
+            arrow="horizontal"
+            onClick={() => {
+              router.push('/setting');
+            }}
+          >
+            {intl.get('app.page.setting.title')}
           </Item>
         </List>
       </Navigation>
