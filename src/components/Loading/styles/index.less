@@ -11,7 +11,7 @@
     background-color: @fill-base;
 
     & > div + div {
-      margin-top: @v-spacing-md;
+      margin-top: @v-spacing-sm;
     }
 
     .cell + .cell {
@@ -20,11 +20,11 @@
 
     .cell :local {
       display: inline-block;
-      height: 14 * @hd;
+      height: 10 * @hd;
       border-radius: @radius-xs;
-      background: linear-gradient(90deg,rgba(207,216,220,.2),rgba(207,216,220,.4),rgba(207,216,220,.2));
+      background: linear-gradient(90deg,rgba(207,216,220,.3),rgba(207,216,220,.4),rgba(207,216,220,.3));
       background-size: 600% 600%;
-      animation: card-loading 1.4s ease infinite;
+      animation: card-loading 1.5s ease infinite;
     }
 
     .cell {

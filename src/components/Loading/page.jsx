@@ -9,15 +9,11 @@ import Loading from './index';
 
 const LoadingPage = () => (
   <div className="boilerplate-loading-page">
-    <Loading />
+    <Loading row={5} cross />
 
-    <Loading />
+    <Loading row={5} cross />
 
-    <Loading />
-
-    <Loading />
-
-    <Loading />
+    <Loading row={5} cross />
   </div>
 );
 

@@ -4,6 +4,14 @@
 
 @import "../../../styles/theme.less";
 
+.wrap {
+  padding: @v-spacing-md @h-spacing-lg;
+
+  &.hasHeight {
+    padding: 0 @h-spacing-lg;
+  }
+}
+
 :global {
   .boilerplate-loading-icon {
     border-radius: @radius-circle;

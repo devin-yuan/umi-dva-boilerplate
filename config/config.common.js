@@ -6,7 +6,7 @@ const commonConfig = {
   env: process.env.UMI_ENV || 'local', // 当前项目的环境变量
   title: 'Boilerplate with UmiJS & DvaJS', // 网站默认标题
   mobile: true, // 是否为移动端项目，该项目基于移动端组件开发，在本项目中请勿改成 false
-  routerTransition: false, // 路由动效，需要 mobile 为true时才能使用
+  routerTransition: true, // 路由动效，需要 mobile 为 true 时才能使用
 };
 
 /**

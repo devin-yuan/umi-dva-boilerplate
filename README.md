@@ -32,6 +32,8 @@
 |`husky`|[更多](https://github.com/typicode/husky)|
 |`less-vars-to-js`|从文件内容中读取 Less 变量并将其作为 JavaScript 对象返回。[更多](https://github.com/michaeltaranto/less-vars-to-js)|
 |`lint-staged`|[更多](https://github.com/okonet/lint-staged)|
+|`mockjs`|生成随机数据，拦截Ajax请求。[更多](https://github.com/nuysoft/Mock)|
+|`roadhog-api-doc`|[更多](https://www.npmjs.com/package/roadhog-api-doc)|
 |`umi`|可插拔的企业级 React 应用框架。[更多](https://github.com/umijs/umi)|
 |`umi-plugin-react`|UmiJS 封装的一个插件集，包含 13 个常用的进阶功能。[更多](https://github.com/umijs/umi/tree/master/packages/umi-plugin-react)|
 

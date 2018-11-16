@@ -2,6 +2,7 @@
  * UmiJS 配置
  * 配置文档：https://umijs.org/zh/config/
  */
+
 import commonConfig from './config/config.common';
 import themeConfig from './config/config.theme';
 
