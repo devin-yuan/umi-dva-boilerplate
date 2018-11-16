@@ -1,0 +1,33 @@
+/**
+ * 文章标题 样式
+ */
+
+@import "../../styles/theme.less";
+
+.titleBox {
+  &.hasContent {
+    padding: @v-spacing-lg;
+    line-height: @line-height-paragraph;
+    font-size: 22 * @hd;
+    font-weight: 700;
+    color: #fff;
+  }
+}
+
+.contentBox {
+  &.hasContent {
+    padding: @v-spacing-lg;
+    line-height: @line-height-paragraph;
+    font-size: @font-size-caption !important;
+  }
+
+  p {
+    margin: 0 !important;
+    margin-bottom: @v-spacing-md !important;
+    padding: 0 !important;
+  }
+
+  img {
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,33 @@
+/**
+ * 没有结果 样式
+ */
+
+@import "../../styles/theme.less";
+
+.wrap {
+  padding: @v-spacing-md @h-spacing-lg;
+
+  &.hasHeight {
+    padding: 0 @h-spacing-lg;
+  }
+
+  & > div {
+    text-align: center;
+
+    i {
+      display: block;
+      margin-top: 15 * @hd;
+      font-size: @font-size-caption;
+      font-style: normal;
+      color: #506277;
+    }
+  }
+
+  .icon {
+    display: inline-block;
+    .square(70 * @hd);
+    background-image: url("../../assets/images/common/no_result_icon.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+}

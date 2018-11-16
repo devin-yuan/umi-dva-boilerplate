@@ -77,7 +77,7 @@ BasicLayout.propTypes = {
   language: PropTypes.string.isRequired,
 };
 
-export default connect(({ loading, global }) => ({
+export default withRouter(connect(({ loading, global }) => ({
   loading,
   language: global.language,
-}))(withRouter(BasicLayout));
+}))(BasicLayout));

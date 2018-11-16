@@ -1,15 +1,16 @@
 /**
- * 加载图标
+ * 没有结果
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import intl from 'react-intl-universal';
 import classNames from 'classnames/bind';
-import styles from './styles/icon.less';
+import styles from './index.less';
 
 const cx = classNames.bind(styles);
 
-const LoadingIcon = ({ height }) => {
+const NoResult = ({ height, text }) => {
   const wrapCls = cx(styles.wrap, {
     hasHeight: height,
   });
@@ -33,20 +34,26 @@ const LoadingIcon = ({ height }) => {
       style={{ height: wrapHeight }}
       data-flex="main:center cross:center"
     >
-      <div className="boilerplate-loading-icon">
-        <div className="boilerplate-loading-icon-inner" />
-        <div className="boilerplate-loading-icon-inner" />
-        <div className="boilerplate-loading-icon-inner" />
+      <div>
+        <span className={styles.icon} />
+        <i>
+          {
+            text
+              ? text
+              : intl.get('app.components.NoResult.text')
+          }
+        </i>
       </div>
     </div>
   );
 };
 
-LoadingIcon.propTypes = {
+NoResult.propTypes = {
   height: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string
   ]),
+  text: PropTypes.string,
 };
 
-export default LoadingIcon;
+export default NoResult;

@@ -1,5 +1,5 @@
 /**
- * 语言设置
+ * 切换语言
  */
 
 import React, { PureComponent } from 'react';
@@ -18,7 +18,7 @@ import Navigation from 'components/Navigation';
 
 const { RadioItem } = Radio;
 
-class SettingLanguage extends PureComponent {
+class SwitchLanguage extends PureComponent {
   // 设置语言
   setLanguage = (data) => {
     const { dispatch } = this.props;
@@ -42,10 +42,10 @@ class SettingLanguage extends PureComponent {
         </Helmet>
 
         <List>
-          {localeConfig.languages.map(data => {
+          {localeConfig.languages.map((data, index) => {
             return (
               <RadioItem
-                key={data}
+                key={`language_item_${index}`}
                 checked={language === data}
                 onChange={() => this.setLanguage(data)}
               >
@@ -54,6 +54,7 @@ class SettingLanguage extends PureComponent {
             );
           })}
         </List>
+
         {intl.get('app.page.setting.language.time', {
           time: moment().format('YYYY-MM-DD HH:mm:ss'),
         })}
@@ -62,11 +63,11 @@ class SettingLanguage extends PureComponent {
   }
 }
 
-SettingLanguage.propTypes = {
+SwitchLanguage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   language: PropTypes.string.isRequired,
 };
 
 export default connect(({ global }) => ({
   language: global.language,
-}))(SettingLanguage);
+}))(SwitchLanguage);

@@ -10,7 +10,7 @@ import { handleLocalStorage } from 'utils';
 import enUSLangPack from 'locales/en_US.json'; // 英文语言包
 import zhCNLangPack from 'locales/zh_CN.json'; // 中文简体语言包
 import zhTWLangPack from 'locales/zh_TW.json'; // 中文繁体语言包
-import enUSAntdMobile from 'antd-mobile/lib/locale-provider/en_US'; // Ant Design Mobile 英文语言包
+import enUSAntMobile from 'antd-mobile/lib/locale-provider/en_US'; // Ant Design Mobile 英文语言包
 import enUSAnt from 'antd/lib/locale-provider/en_US'; // Ant Design 英文语言包
 import zhCNAnt from 'antd/lib/locale-provider/zh_CN'; // Ant Design 中文简体语言包
 import zhTWAnt from 'antd/lib/locale-provider/zh_TW'; // Ant Design 中文繁体语言包
@@ -108,7 +108,7 @@ export const getAntDesignLang = (lang) => {
     // 移动版
     switch (langIndex) {
       case 0:
-        val = enUSAntdMobile;
+        val = enUSAntMobile;
         break;
       default:
         break;

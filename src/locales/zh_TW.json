@@ -2,6 +2,7 @@
   "app.language.en_US": "英文",
   "app.language.zh_CN": "中文簡體",
   "app.language.zh_TW": "中文繁體",
+  "app.components.NoResult.text": "沒有結果",
   "app.page.setting.title": "設置",
   "app.page.setting.language.title": "切換語言",
   "app.page.setting.language.time": "當前時間：{time}"

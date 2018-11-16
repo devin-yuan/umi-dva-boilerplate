@@ -37,6 +37,14 @@ export default () => (
       >
         图表示例
       </Item>
+      <Item
+        arrow="horizontal"
+        onClick={() => {
+          router.push('/news/1');
+        }}
+      >
+        Mock 示例
+      </Item>
     </List>
   </Navigation>
 );
