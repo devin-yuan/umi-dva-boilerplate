@@ -36,7 +36,7 @@
     "lint-staged": "^8.0.4",
     "mockjs": "^1.0.1-beta3",
     "roadhog-api-doc": "^1.1.2",
-    "umi": "^2.2.6",
+    "umi": "^2.2.7",
     "umi-plugin-react": "^1.2.2"
   },
   "lint-staged": {

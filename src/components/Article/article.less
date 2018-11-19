@@ -4,6 +4,7 @@
 
 @import "../../styles/theme.less";
 
+/* 标题 */
 .titleBox {
   &.hasContent {
     padding: @v-spacing-lg;
@@ -14,6 +15,7 @@
   }
 }
 
+/* 内容 */
 .contentBox {
   &.hasContent {
     padding: @v-spacing-lg;
@@ -29,5 +31,35 @@
 
   img {
     width: 100% !important;
+  }
+}
+
+/* 来源 */
+.sourceBox {
+  padding: 0 @h-spacing-lg;
+}
+
+.sourceAvatar {
+  padding-right: @h-spacing-lg;
+}
+
+.sourceContent {
+  :global {
+    .boilerplate-loading {
+      padding: 0;
+    }
+  }
+
+  dl {
+    dt {
+      font-size: @font-size-base;
+      color: #fff;
+    }
+
+    dd {
+      padding-top: 7 * @hd;
+      font-size: @font-size-caption-sm;
+      color: #506277;
+    }
   }
 }

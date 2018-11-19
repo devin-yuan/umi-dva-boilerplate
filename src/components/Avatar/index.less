@@ -1,0 +1,28 @@
+/**
+ * 头像组件 样式
+ */
+
+@import "../../styles/theme.less";
+
+:global {
+  .boilerplate-avatar :local {
+    animation: card-loading 1.5s ease infinite;
+  }
+
+  .boilerplate-avatar {
+    display: inline-block;
+    .square(32 * @hd);
+    border-radius: 50%;
+    background: linear-gradient(90deg,rgba(207,216,220,.3),rgba(207,216,220,.4),rgba(207,216,220,.3));
+    background-size: 600% 600%;
+    overflow: hidden;
+
+    &.square {
+      border-radius: @radius-xs;
+    }
+
+    & > img {
+      .square(100%);
+    }
+  }
+}

@@ -1,0 +1,23 @@
+/**
+ * 回到顶部 样式
+ */
+
+@import "../../styles/theme.less";
+
+.wrap {
+  position: fixed;
+  right: -36 * @hd;
+  bottom: 100 * @hd;
+  z-index: 998;
+  padding-top: 6 * @hd;
+  .square(36 * @hd);
+  background-color: rgba(80, 98, 119, .8);
+  border-radius: 50%;
+  box-shadow: 0 0 (2 * @hd) 0 rgba(0, 0, 0, .2);
+  text-align: center;
+  transition: right .3s;
+
+  &.show {
+    right: @h-spacing-lg;
+  }
+}
