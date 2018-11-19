@@ -24,21 +24,23 @@ const newsDetail = mock({
     title: Random.ctitle(5, 25),
     content: `<p>${Random.cparagraph(200, 500)}</p>`,
     'imageUrls|0-5': [Random.image('530x300')],
+    source: Random.cname(),
+    sourceAvatar: Random.image('64x64'),
     pubDate: Date.parse(new Date()),
   },
 });
 
 const proxy = {
-  'POST /news/detail': (req, res) => {
-    const { body } = req;
+  'GET /news/detail': (req, res) => {
+    const { query } = req;
 
     let result = {};
 
     // 如果资讯 id 为数字类型，就返回正常结果
-    if (!isNaN(Number(body.id))) {
+    if (!isNaN(Number(query.id))) {
       result = newsDetail;
     } else {
-      result = error('该内容已被发布者下架')
+      result = error('该内容已被发布者下架');
     }
 
     // 添加跨域请求头

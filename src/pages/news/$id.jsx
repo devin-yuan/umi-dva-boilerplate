@@ -8,10 +8,12 @@ import { connect } from 'dva';
 import { Helmet } from 'react-helmet';
 
 import Navigation from 'components/Navigation';
+import GoToTop from 'components/GoToTop';
 import NoResult from 'components/NoResult';
 import {
   ArticleTitle,
   ArticleContent,
+  ArticleSource,
 } from 'components/Article';
 
 class NewsDetail extends PureComponent {
@@ -27,9 +29,17 @@ class NewsDetail extends PureComponent {
           text={showContent ? data.title : undefined}
         />
 
+        <div style={{ width: '70%' }}>
+          <ArticleSource
+            data={showContent ? data : undefined}
+          />
+        </div>
+
         <ArticleContent
           content={showContent ? data.content : undefined}
         />
+
+        <GoToTop />
       </Fragment>
     );
 

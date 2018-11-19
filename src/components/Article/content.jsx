@@ -20,8 +20,8 @@ const ArticleContent = ({ content }) => {
     <div className={wrapCls}>
       {
         content
-          ? (<div dangerouslySetInnerHTML={{ __html: content }} />)
-          : (<Loading row={ 5 } />)
+          ? (<div dangerouslySetInnerHTML={{__html: content}} />)
+          : (<Loading row={5} />)
       }
     </div>
   );
