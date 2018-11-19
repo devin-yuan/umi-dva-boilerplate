@@ -6,6 +6,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Helmet } from 'react-helmet';
+import { WingBlank, WhiteSpace } from 'antd-mobile';
 
 import Navigation from 'components/Navigation';
 import GoToTop from 'components/GoToTop';
@@ -15,6 +16,7 @@ import {
   ArticleContent,
   ArticleSource,
 } from 'components/Article';
+import Gallery from 'components/Gallery';
 
 class NewsDetail extends PureComponent {
   render() {
@@ -34,6 +36,16 @@ class NewsDetail extends PureComponent {
             data={showContent ? data : undefined}
           />
         </div>
+
+        <WingBlank>
+          {
+            showContent && data.imageUrls.length > 0
+              ? (<WhiteSpace size="lg" />)
+              : null
+          }
+
+          <Gallery data={showContent ? data.imageUrls : undefined} />
+        </WingBlank>
 
         <ArticleContent
           content={showContent ? data.content : undefined}

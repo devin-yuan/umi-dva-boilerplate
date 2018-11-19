@@ -20,6 +20,7 @@
     "numeral": "^2.0.6",
     "react-helmet": "^5.2.0",
     "react-intl-universal": "^1.15.2",
+    "react-photoswipe": "^1.3.0",
     "react-transition-group": "^2.5.0"
   },
   "devDependencies": {
