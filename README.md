@@ -15,6 +15,7 @@
 |`numeral`|用于格式化和操作数字的 JavaScript 库。[更多](https://github.com/adamwdraper/Numeral-js)|
 |`react-helmet`|设置 HTML head 信息。[更多](https://github.com/nfl/react-helmet)|
 |`react-intl-universal`|阿里出的 React 多语言插件。[更多](https://github.com/alibaba/react-intl-universal)|
+|`react-photoswipe`|React 的 PhotoSwipe 封装，用于图片预览及画廊功能。[更多](https://github.com/minhtranite/react-photoswipe)|
 |`react-transition-group`|在 React 组件进入或离开 DOM 时执行动画的简单方法。[更多](https://github.com/reactjs/react-transition-group)|
 
 **devDependencies**
