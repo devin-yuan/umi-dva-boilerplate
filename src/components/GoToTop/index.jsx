@@ -18,6 +18,37 @@ class GoToTop extends PureComponent {
     };
   }
 
+  componentDidMount() {
+    // 监听滚动条，改变显示状态
+    window.addEventListener('scroll', this.switchShowState);
+  }
+
+  componentWillUnmount() {
+    // 注销滚动条事件监听
+    window.removeEventListener('scroll', this.switchShowState);
+  }
+
+  // 切换显示状态
+  switchShowState = () => {
+    const { show } = this.state;
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop; // eslint-disable-line
+
+    if (!show && scrollTop >= 500) {
+      this.setState({
+        show: true,
+      });
+    } else if (show && scrollTop < 500) {
+      this.setState({
+        show: false,
+      });
+    }
+  }
+
+  // 去顶部
+  goToTop = () => {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     const { show } = this.state;
     const wrapCls = cx(styles.wrap, {
@@ -25,7 +56,10 @@ class GoToTop extends PureComponent {
     });
 
     return (
-      <div className={wrapCls}>
+      <div
+        className={wrapCls}
+        onClick={this.goToTop}
+      >
         <Icon type="up" color="#fff" />
       </div>
     );
