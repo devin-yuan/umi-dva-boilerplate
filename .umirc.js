@@ -35,9 +35,11 @@ export default {
           /styles/,
         ],
       },
-      dynamicImport: !commonConfig.routerTransition ? {
-        loadingComponent: 'components/Loading/page', // 配置过场组件
-      } : false,
+      // 过场组件效果不太好，先禁用吧
+      // dynamicImport: !commonConfig.routerTransition ? {
+      //   loadingComponent: 'components/Loading/page', // 配置过场组件
+      // } : false,
+      dynamicImport: false,
       dll: false,
       pwa: false,
       hd: commonConfig.mobile, // 开启高清方案

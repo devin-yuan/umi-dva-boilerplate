@@ -4,20 +4,25 @@
 
 @import "../../styles/theme.less";
 
+.wrap {
+  padding-top: 45 * @hd;
+  height: 100%;
+
+  &.noHeader {
+    padding-top: 0;
+  }
+}
+
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  width: 100%;
+  background-color: @fill-body;
   .border-bottom();
 
   &.dark {
     border-bottom: none;
   }
-}
-
-.main {
-  height: 0;
-}
-
-.content {
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 }
