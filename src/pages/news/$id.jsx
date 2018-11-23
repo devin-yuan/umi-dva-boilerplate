@@ -19,6 +19,17 @@ import {
 import Gallery from 'components/Gallery';
 
 class NewsDetail extends PureComponent {
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+
+    dispatch({
+      type: 'newsDetail/updateState',
+      payload: {
+        result: {},
+      },
+    });
+  }
+
   render() {
     const { result, loading } = this.props;
     const { code, data } = result;
@@ -68,17 +79,6 @@ class NewsDetail extends PureComponent {
         {main}
       </Navigation>
     );
-  }
-
-  componentWillUnmount() {
-    const { dispatch } = this.props;
-
-    dispatch({
-      type: 'newsDetail/updateState',
-      payload: {
-        result: {},
-      },
-    });
   }
 }
 

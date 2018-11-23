@@ -6,11 +6,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import intl from 'react-intl-universal';
-import { Helmet } from "react-helmet";
-import {
-  List,
-  Radio,
-} from 'antd-mobile';
+import { Helmet } from 'react-helmet';
+import { List, Radio } from 'antd-mobile';
 import moment from 'moment';
 import localeConfig from 'config/config.locale';
 
@@ -43,9 +40,11 @@ class SwitchLanguage extends PureComponent {
 
         <List>
           {localeConfig.languages.map((data, index) => {
+            const key = `language_item_${index}`;
+
             return (
               <RadioItem
-                key={`language_item_${index}`}
+                key={key}
                 checked={language === data}
                 onChange={() => this.setLanguage(data)}
               >

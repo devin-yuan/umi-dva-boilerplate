@@ -45,7 +45,7 @@ const LoadingIcon = ({ height }) => {
 LoadingIcon.propTypes = {
   height: PropTypes.oneOfType([
     PropTypes.number,
-    PropTypes.string
+    PropTypes.string,
   ]),
 };
 

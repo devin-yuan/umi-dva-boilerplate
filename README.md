@@ -25,8 +25,6 @@
 |`babel-eslint`|用于 ESLint 的 Babel 解析器的包装器。[更多](https://github.com/babel/babel-eslint)|
 |`cross-env`|设定环境变量的工具。[更多](https://github.com/kentcdodds/cross-env)|
 |`eslint`|语法规则和代码风格的检查工具。[更多](https://github.com/eslint/eslint)|
-|`eslint-config-umi`|UmiJS 为 ESlint 配套的一些规则。[更多](https://www.npmjs.com/package/eslint-config-umi)|
-|`eslint-plugin-flowtype`|Flow type 为 ESLint 制定的规则。[更多](https://github.com/gajus/eslint-plugin-flowtype)|
 |`eslint-plugin-import`|带有规则的 ESLint 插件，有助于验证正确的导入。[更多](https://github.com/benmosher/eslint-plugin-import)|
 |`eslint-plugin-jsx-a11y`|[更多](https://github.com/evcohen/eslint-plugin-jsx-a11y)|
 |`eslint-plugin-react`|React 为 ESLint 制定的规则。[更多](https://github.com/yannickcr/eslint-plugin-react)|
@@ -34,6 +32,7 @@
 |`less-vars-to-js`|从文件内容中读取 Less 变量并将其作为 JavaScript 对象返回。[更多](https://github.com/michaeltaranto/less-vars-to-js)|
 |`lint-staged`|[更多](https://github.com/okonet/lint-staged)|
 |`mockjs`|生成随机数据，拦截Ajax请求。[更多](https://github.com/nuysoft/Mock)|
+|`react-dev-utils`|[更多](https://github.com/facebook/create-react-app)|
 |`roadhog-api-doc`|[更多](https://www.npmjs.com/package/roadhog-api-doc)|
 |`umi`|可插拔的企业级 React 应用框架。[更多](https://github.com/umijs/umi)|
 |`umi-plugin-react`|UmiJS 封装的一个插件集，包含 13 个常用的进阶功能。[更多](https://github.com/umijs/umi/tree/master/packages/umi-plugin-react)|
@@ -53,6 +52,12 @@
 |`path-to-regexp`|将路径字符串（例如`/user/:name`）转换为正则表达式。[更多](https://github.com/pillarjs/path-to-regexp)|
 |`moment`|在 JavaScript 中解析，验证，操作和显示日期。[更多](https://github.com/moment/moment)|
 |`react-intl`|React 多语言支持。[更多](https://github.com/yahoo/react-intl)|
+
+## 编辑器插件
+
+为保证代码风格的统一，请在编辑器中按照如下插件:
+* EditorConfig
+* ESLint
 
 ## License
 

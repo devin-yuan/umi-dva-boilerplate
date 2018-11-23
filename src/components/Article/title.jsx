@@ -18,10 +18,10 @@ const ArticleTitle = ({ text }) => {
 
   return (
     <div className={wrapCls}>
-      {text ? text : (<Loading />)}
+      {text || (<Loading />)}
     </div>
   );
-}
+};
 
 ArticleTitle.propTypes = {
   text: PropTypes.string,

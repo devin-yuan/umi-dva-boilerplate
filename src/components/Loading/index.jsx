@@ -96,17 +96,17 @@ const Loading = ({
               </div>
             );
           default:
-            break;
+            return null;
         }
       })}
     </div>
   );
-}
+};
 
 Loading.propTypes = {
   height: PropTypes.oneOfType([
     PropTypes.number,
-    PropTypes.string
+    PropTypes.string,
   ]),
   row: PropTypes.number,
   cross: PropTypes.bool,

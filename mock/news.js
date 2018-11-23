@@ -9,13 +9,11 @@ import { delay } from 'roadhog-api-doc';
 const { Random, mock } = Mock;
 
 // 报错信息
-const error = (message) => {
-  return {
-    code: 400,
-    message: message || '发生错误',
-    data: {},
-  }
-};
+const error = message => ({
+  code: 400,
+  message: message || '发生错误',
+  data: {},
+});
 
 // 资讯详情
 const newsDetail = mock({
@@ -44,7 +42,7 @@ const proxy = {
     }
 
     // 添加跨域请求头
-    // res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     // 返回结果
     res.status(200).json(result);
   },

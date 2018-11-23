@@ -83,7 +83,7 @@ class Gallery extends PureComponent {
 Gallery.propTypes = {
   data: PropTypes.oneOfType([
     PropTypes.array,
-    PropTypes.string
+    PropTypes.string,
   ]),
 };
 

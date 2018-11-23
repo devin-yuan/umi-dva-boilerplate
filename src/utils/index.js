@@ -1,6 +1,7 @@
 /**
  * 工具方法
  */
+
 import commonConfig from 'config/config.common';
 
 /**
@@ -27,26 +28,20 @@ export const adaptRem = (val, unit = false) => {
  * @param value: 要存的值
  */
 export const handleLocalStorage = (type, key, value) => {
-  let result = null;
-
   switch (type) {
     case 'set':
       window.localStorage.setItem(key, value);
 
-      break;
+      return null;
     case 'get':
-      result = window.localStorage.getItem(key);
-
-      break;
+      return window.localStorage.getItem(key);
     case 'remove':
       window.localStorage.removeItem(key);
 
-      break;
+      return null;
     default:
-      break;
+      return null;
   }
-
-  return result;
 };
 
 /**
@@ -56,26 +51,20 @@ export const handleLocalStorage = (type, key, value) => {
  * @param value: 要存的值
  */
 export const handleSessionStorage = (type, key, value) => {
-  let result = null;
-
   switch (type) {
     case 'set':
       window.sessionStorage.setItem(key, value);
 
-      break;
+      return null;
     case 'get':
-      result = window.sessionStorage.getItem(key);
-
-      break;
+      return window.sessionStorage.getItem(key);
     case 'remove':
       window.sessionStorage.removeItem(key);
 
-      break;
+      return null;
     default:
-      break;
+      return null;
   }
-
-  return result;
 };
 
 /**
@@ -103,7 +92,7 @@ export const splitArray = (array, num = 1) => {
 
       result[key] = temp;
 
-      key++;
+      key += 1;
     }
   }
 

@@ -37,11 +37,7 @@ const NoResult = ({ height, text }) => {
       <div>
         <span className={styles.icon} />
         <i>
-          {
-            text
-              ? text
-              : intl.get('app.components.NoResult.text')
-          }
+          {text || intl.get('app.components.NoResult.text')}
         </i>
       </div>
     </div>
@@ -51,7 +47,7 @@ const NoResult = ({ height, text }) => {
 NoResult.propTypes = {
   height: PropTypes.oneOfType([
     PropTypes.number,
-    PropTypes.string
+    PropTypes.string,
   ]),
   text: PropTypes.string,
 };

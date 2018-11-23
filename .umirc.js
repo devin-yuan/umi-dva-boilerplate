@@ -3,8 +3,17 @@
  * 配置文档：https://umijs.org/zh/config/
  */
 
+import path from 'path';
+import fs from 'fs';
+import eslintFormatter from 'react-dev-utils/eslintFormatter';
+
 import commonConfig from './config/config.common';
 import themeConfig from './config/config.theme';
+
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+
+// console.log('看看这句话在哪里输出的');
 
 export default {
   plugins: [
@@ -47,9 +56,29 @@ export default {
     ie: 9,
   },
   context: {
-    mobile: commonConfig.mobile, // 告诉模板，是否为移动端项目
+    __MOBILE__: commonConfig.mobile, // 告诉模板，是否为移动端项目
+    __LOCAL__: commonConfig.globalVariable.__LOCAL__,
+    __TEST__: commonConfig.globalVariable.__TEST__,
+    __PROD__: commonConfig.globalVariable.__PROD__,
   },
   /* ---------- 以下为 webpack 的配置 ---------- */
+  chainWebpack(config, { webpack }) {
+    config.module
+      .rule('lint')
+      .test(/.(js|jsx)$/)
+      .pre()
+      .include
+      .add(resolveApp('src'))
+      .add(resolveApp('config'))
+      .end()
+      // Even create named uses (loaders)
+      .use('eslint')
+      .loader(require.resolve('eslint-loader'))
+      .options({
+        formatter: eslintFormatter,
+        eslintPath: require.resolve('eslint'),
+      });
+  },
   theme: themeConfig(), // 主题配置
   define: commonConfig.globalVariable, // 抛出全局变量
   // 简化文件目录 url
