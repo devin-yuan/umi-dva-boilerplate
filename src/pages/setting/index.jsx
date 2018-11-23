@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import router from 'umi/router';
 import { connect } from 'dva';
 import intl from 'react-intl-universal';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 import { List } from 'antd-mobile';
 
 import Navigation from 'components/Navigation';

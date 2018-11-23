@@ -6,8 +6,4 @@ import ArticleTitle from './title';
 import ArticleContent from './content';
 import ArticleSource from './source';
 
-export {
-  ArticleTitle,
-  ArticleContent,
-  ArticleSource,
-};
+export { ArticleTitle, ArticleContent, ArticleSource };

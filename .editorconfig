@@ -2,15 +2,15 @@
 root = true
 
 [*]
-indent_style = space
-indent_size = 2
-end_of_line = lf
-charset = utf-8
-trim_trailing_whitespace = true
-insert_final_newline = true
+indent_style = space # 缩进方式
+indent_size = 2 # 缩进大小
+end_of_line = lf # 换行符的表示方式
+charset = utf-8 # 编码格式
+trim_trailing_whitespace = true # 自动删除文件末尾空格
+insert_final_newline = true # 文件在保存时是否以空格结束
 
 [*.md]
-trim_trailing_whitespace = false
+trim_trailing_whitespace = false # 自动删除文件末尾空格
 
 [Makefile]
-indent_style = tab
+indent_style = tab # 缩进方式

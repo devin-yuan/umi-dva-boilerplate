@@ -10,15 +10,18 @@ import { handleLocalStorage } from 'utils';
 import enUSLangPack from 'locales/en_US.json'; // 英文语言包
 import zhCNLangPack from 'locales/zh_CN.json'; // 中文简体语言包
 import zhTWLangPack from 'locales/zh_TW.json'; // 中文繁体语言包
-import enUSAntMobile from 'antd-mobile/lib/locale-provider/en_US'; // Ant Design Mobile 英文语言包
+// Ant Design Mobile 英文语言包
+import enUSAntMobile from 'antd-mobile/lib/locale-provider/en_US';
 import enUSAnt from 'antd/lib/locale-provider/en_US'; // Ant Design 英文语言包
 import zhCNAnt from 'antd/lib/locale-provider/zh_CN'; // Ant Design 中文简体语言包
 import zhTWAnt from 'antd/lib/locale-provider/zh_TW'; // Ant Design 中文繁体语言包
 
 const formatTranslationMessages = (locale, messages) => {
+  const configDefaultLang = localeConfig.defaultLang; // 配置文件中的默认语言
+
   let defaultLangPack = zhCNLangPack;
 
-  switch (localeConfig.defaultLang) {
+  switch (configDefaultLang) {
     case 'en_US':
       defaultLangPack = enUSLangPack;
       break;
@@ -33,12 +36,12 @@ const formatTranslationMessages = (locale, messages) => {
       break;
   }
 
-  const defaultFormattedMessages = locale !== localeConfig.defaultLang
-    ? formatTranslationMessages(localeConfig.defaultLang, defaultLangPack)
+  const defaultFormattedMessages = locale !== configDefaultLang
+    ? formatTranslationMessages(configDefaultLang, defaultLangPack)
     : {};
 
   return Object.keys(messages).reduce((formattedMessages, key) => {
-    const formattedMessage = !messages[key] && locale !== localeConfig.defaultLang
+    const formattedMessage = !messages[key] && locale !== configDefaultLang
       ? defaultFormattedMessages[key]
       : messages[key];
 
@@ -49,17 +52,19 @@ const formatTranslationMessages = (locale, messages) => {
 };
 
 const appLangPack = {
-  'en_US': formatTranslationMessages('en_US', enUSLangPack),
-  'zh_CN': formatTranslationMessages('zh_CN', zhCNLangPack),
-  'zh_TW': formatTranslationMessages('zh_TW', zhTWLangPack),
+  en_US: formatTranslationMessages('en_US', enUSLangPack),
+  zh_CN: formatTranslationMessages('zh_CN', zhCNLangPack),
+  zh_TW: formatTranslationMessages('zh_TW', zhTWLangPack),
 };
 
 export const setLanguage = (lang) => {
   let currentLocale = lang || localeConfig.defaultLang;
 
   if (!lang) {
-    const urlLang = queryString.parse(window.location.search).lang || null; // url中带的语言
-    const localLang = handleLocalStorage('get', 'curLanguage'); // 本地保存的语言
+    // url中带的语言
+    const urlLang = queryString.parse(window.location.search).lang || null;
+    // 本地保存的语言
+    const localLang = handleLocalStorage('get', 'curLanguage');
 
     // 本地参数为第二优先
     if (localLang && localeConfig.languages.indexOf(localLang) >= 0) {
@@ -80,40 +85,31 @@ export const setLanguage = (lang) => {
   handleLocalStorage('set', 'curLanguage', currentLocale);
 
   return currentLocale;
-}
+};
 
 // 获取 Ant Design 的语言包支持
 export const getAntDesignLang = (lang) => {
   const langIndex = localeConfig.languages.indexOf(lang);
 
-  let val = undefined;
-
   if (!commonConfig.mobile) {
     // PC 版
     switch (langIndex) {
       case 0:
-        val = enUSAnt;
-        break;
+        return enUSAnt;
       case 1:
-        val = zhCNAnt;
-        break;
+        return zhCNAnt;
       case 2:
-        val = zhTWAnt;
-        break;
+        return zhTWAnt;
       default:
-        val = zhCNAnt;
-        break;
+        return zhCNAnt;
     }
   } else {
     // 移动版
     switch (langIndex) {
       case 0:
-        val = enUSAntMobile;
-        break;
+        return enUSAntMobile;
       default:
-        break;
+        return undefined;
     }
   }
-
-  return val;
-}
+};

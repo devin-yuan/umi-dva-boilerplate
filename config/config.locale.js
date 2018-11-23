@@ -10,6 +10,8 @@ const locales = {
   ],
 };
 
-locales.defaultLang = locales.languages[1]; // 应用默认语言，但是还是会优先浏览器语言
+const defaultLang = locales.languages[1];
+
+locales.defaultLang = defaultLang; // 应用默认语言，但是还是会优先浏览器语言
 
 export default locales;

@@ -19,7 +19,8 @@ const initTimeData = (area) => {
   const curMonth = curDate.getMonth(); // 当前月
   const curDay = curDate.getDate(); // 当前日
 
-  let data = []; // 最后返回的数组
+  const data = []; // 最后返回的数组
+
   let am = 121; // 上午的交易时间点 (默认A股)
   let pm = 121; // 下午的交易时间点 (默认A股)
   // 上午的开盘时间 (默认A股)
@@ -75,20 +76,21 @@ const initTimeData = (area) => {
   ]]
  */
 const splitData = (data, preClose) => {
-  let price = []; // 价格
-  let priceRange = []; // 价格涨跌幅
-  let priceRangeSection = [0, 0]; // 价格涨跌幅区间，用于 y 轴
-  let averagePrice = []; // 均价
-  let averagePriceSection = [0, 0]; // 均价区间，用于 y 轴
-  let volume = []; // 成交量
+  const price = []; // 价格
+  const priceRange = []; // 价格涨跌幅
+  const priceRangeSection = [0, 0]; // 价格涨跌幅区间，用于 y 轴
+  const averagePrice = []; // 均价
+  const averagePriceSection = [0, 0]; // 均价区间，用于 y 轴
+  const volume = []; // 成交量
 
   for (let i = 0; i < data.length; i++) {
     const item = data[i]; // 当前项
     const curPrice = item[1]; // 当前价格
     const curAveragePrice = item[2]; // 当前均价
+    // eslint-disable-next-line max-len
     const curPriceRange = numeral(((curPrice - preClose) / preClose) * 100).format('0.00'); // 当前涨跌幅
 
-    let curVolume = {
+    const curVolume = {
       value: item[3], // 当前成交量
       itemStyle: {
         color: commonConfig.custom.color.red,
@@ -121,7 +123,7 @@ const splitData = (data, preClose) => {
       }
     } else {
       // 如果不是第一个点跟前一个点比
-      let prePrice = data[i - 1][1]; // 上一个点的现价
+      const prePrice = data[i - 1][1]; // 上一个点的现价
 
       if (curPrice < prePrice) {
         curVolume.itemStyle.color = commonConfig.custom.color.green;
@@ -238,12 +240,15 @@ export default (data, preClose) => {
         interval: 0,
         margin: adaptRem(-15),
         formatter: (value, index) => {
-          if (index === 0 || index === 330) {
-            return value;
-          } else if (index === 165) {
-            return '12:00/13:00';
-          } else {
-            return null;
+          switch (index) {
+            case 0:
+              return value;
+            case 330:
+              return value;
+            case 165:
+              return '12:00/13:00';
+            default:
+              return null;
           }
         },
         color: '#506277',
@@ -425,7 +430,7 @@ export default (data, preClose) => {
     },
     axisPointer: {
       link: {
-        xAxisIndex: 'all'
+        xAxisIndex: 'all',
       },
     },
     toolbox: {
