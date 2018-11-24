@@ -9,8 +9,8 @@ import { delay } from 'roadhog-api-doc';
 const { Random, mock } = Mock;
 
 // 报错信息
-const error = message => ({
-  code: 400,
+const error = (message, code = 400) => ({
+  code,
   message: message || '发生错误',
   data: {},
 });

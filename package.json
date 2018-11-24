@@ -16,6 +16,7 @@
     "axios": "^0.18.0",
     "echarts": "^4.2.0-rc.2",
     "echarts-for-react": "^2.0.15-beta.0",
+    "md5": "^2.2.1",
     "nprogress": "^0.2.0",
     "numeral": "^2.0.6",
     "react-helmet": "^5.2.0",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "cookie": "^0.3.1",
     "cross-env": "^5.2.0",
     "eslint": "^5.8.0",
     "eslint-config-airbnb": "^17.1.0",

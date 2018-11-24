@@ -2,12 +2,14 @@
  * 登录 Model
  */
 
+import router from 'umi/router';
+
 import {
   login,
 } from 'services/user';
 
 export default {
-  namespace: 'userLogin',
+  namespace: 'login',
   state: {
     result: {},
   },
@@ -18,13 +20,20 @@ export default {
     // 提交登录
     * submitLogin({ payload }, { call, put }) {
       const response = yield call(login, payload);
+      const { code } = response;
 
-      yield put({
-        type: 'updateState',
-        payload: {
-          result: response,
-        },
-      });
+      if (code === __SUCCESS__) {
+        // 登录成功
+        router.push('/user');
+      } else {
+        // 登录失败
+        yield put({
+          type: 'updateState',
+          payload: {
+            result: response,
+          },
+        });
+      }
     },
   },
   reducers: {

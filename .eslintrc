@@ -10,6 +10,8 @@
     "__PROD__": true,
     "__SUCCESS__": true,
     "__FAIL__": true,
+    "__NOTLOGGED__": true,
+    "__ISLOGGED__": true,
     "__TIMEOUT__": true,
     "__OFFLINE__": true,
     "__IGNORE__": true
