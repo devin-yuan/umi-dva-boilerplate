@@ -1,31 +1,23 @@
+/* eslint-disable no-underscore-dangle */
+
 /**
  * 资讯模块 Mock
  */
 
+import commonConfig from '../config/config.common';
 import newsApi from '../config/api/news';
 import Mock from 'mockjs';
 import { delay } from 'roadhog-api-doc';
 
 const { Random, mock } = Mock;
 
+// 返回状态码
+const stateCode = commonConfig.globalVariable;
 // 报错信息
-const error = (message, code = 400) => ({
+const error = (message, code = stateCode.__FAIL__) => ({
   code,
   message: message || '发生错误',
   data: {},
-});
-
-// 资讯详情
-const newsDetail = mock({
-  code: 0,
-  data: {
-    title: Random.ctitle(5, 25),
-    content: `<p>${Random.cparagraph(200, 500)}</p>`,
-    'imageUrls|0-5': [Random.image('530x300')],
-    source: Random.cname(),
-    sourceAvatar: Random.image('64x64'),
-    pubDate: Date.parse(new Date()),
-  },
 });
 
 const proxy = {
@@ -36,7 +28,17 @@ const proxy = {
 
     // 如果资讯 id 为数字类型，就返回正常结果
     if (!isNaN(Number(query.id))) {
-      result = newsDetail;
+      result = mock({
+        code: stateCode.__SUCCESS__,
+        data: {
+          title: Random.ctitle(5, 25),
+          content: `<p>${Random.cparagraph(200, 500)}</p>`,
+          'imageUrls|0-5': [Random.image('530x300')],
+          source: Random.cname(),
+          sourceAvatar: Random.image('64x64'),
+          pubDate: Date.parse(new Date()),
+        },
+      });
     } else {
       result = error('该内容已被发布者下架');
     }
