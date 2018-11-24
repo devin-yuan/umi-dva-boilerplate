@@ -31,16 +31,14 @@ export const handleLocalStorage = (type, key, value) => {
   switch (type) {
     case 'set':
       window.localStorage.setItem(key, value);
-
-      return null;
+      break;
     case 'get':
       return window.localStorage.getItem(key);
     case 'remove':
       window.localStorage.removeItem(key);
-
-      return null;
+      break;
     default:
-      return null;
+      break;
   }
 };
 
@@ -54,16 +52,14 @@ export const handleSessionStorage = (type, key, value) => {
   switch (type) {
     case 'set':
       window.sessionStorage.setItem(key, value);
-
-      return null;
+      break;
     case 'get':
       return window.sessionStorage.getItem(key);
     case 'remove':
       window.sessionStorage.removeItem(key);
-
-      return null;
+      break;
     default:
-      return null;
+      break;
   }
 };
 
@@ -128,13 +124,13 @@ export const cookieParse = (str = false, key = false) => {
 export const handleCookie = (type, key) => {
   switch (type) {
     case 'set':
-      return null;
+      break;
     case 'get':
       return cookieParse(document.cookie, key);
     case 'remove':
-      return null;
+      break;
     default:
-      return null;
+      break;
   }
 };
 

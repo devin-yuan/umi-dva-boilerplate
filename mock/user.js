@@ -24,7 +24,7 @@ const error = (message, code = stateCode.__FAIL__) => ({
 const proxy = {
   // 登录
   [`POST /${userApi.login}`]: (req, res) => {
-    const { body, headers } = req;
+    const { headers, body } = req;
     const cookies = cookie.parse(headers.cookie || '');
     // 测试用户名 admin
     const isUsername = body.username === 'admin';
