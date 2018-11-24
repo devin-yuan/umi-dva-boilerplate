@@ -2,7 +2,7 @@
  * 资讯模块 Mock
  */
 
-// import newsApi from 'config/api/news';
+import newsApi from '../config/api/news';
 import Mock from 'mockjs';
 import { delay } from 'roadhog-api-doc';
 
@@ -29,7 +29,7 @@ const newsDetail = mock({
 });
 
 const proxy = {
-  'GET /news/detail': (req, res) => {
+  [`GET /${newsApi.newsDetail}`]: (req, res) => {
     const { query } = req;
 
     let result = {};

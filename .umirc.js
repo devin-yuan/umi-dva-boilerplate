@@ -13,8 +13,6 @@ import themeConfig from './config/config.theme';
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
-// console.log('看看这句话在哪里输出的');
-
 export default {
   plugins: [
     /*

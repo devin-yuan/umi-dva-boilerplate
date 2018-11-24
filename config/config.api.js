@@ -2,7 +2,9 @@
  * 接口配置
  */
 
+import chartApi from './api/chart';
 import newsApi from './api/news';
+import userApi from './api/user';
 
 // 当前环境
 const curEnv = __ENV__ || 'local';
@@ -26,5 +28,7 @@ const api = (url) => {
 };
 
 export default {
+  chart: api(chartApi),
   news: api(newsApi),
+  user: api(userApi),
 };

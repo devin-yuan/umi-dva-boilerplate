@@ -19,10 +19,16 @@
   left: 0;
   z-index: 900;
   width: 100%;
-  background-color: @fill-body;
-  .border-bottom();
+  background-color: @fill-base;
+  box-shadow: 0 0 (15 * @hd) 0 rgba(0, 0, 0, .2);
 
   &.dark {
     border-bottom: none;
+  }
+
+  :global {
+    .am-navbar-title {
+      color: @color-text-title;
+    }
   }
 }
