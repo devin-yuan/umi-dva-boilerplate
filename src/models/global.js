@@ -9,7 +9,7 @@ export default {
   namespace: 'global',
   state: {
     language: localeConfig.defaultLang,
-    userInfo: {},
+    user: {},
   },
   subscriptions: {
     // 初始化语言

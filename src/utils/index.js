@@ -23,9 +23,9 @@ export const adaptRem = (val, unit = false) => {
 
 /**
  * localStorage 处理方法
- * @param type: 要做什么操作
- * @param key: 要处理的key
- * @param value: 要存的值
+ * @param {string} type: 要做什么操作
+ * @param {string} key: 要处理的key
+ * @param {string} value: 要存的值
  */
 export const handleLocalStorage = (type, key, value) => {
   switch (type) {
@@ -46,9 +46,9 @@ export const handleLocalStorage = (type, key, value) => {
 
 /**
  * sessionStorage 处理方法
- * @param type: 要做什么操作
- * @param key: 要处理的key
- * @param value: 要存的值
+ * @param {string} type: 要做什么操作
+ * @param {string} key: 要处理的key
+ * @param {string} value: 要存的值
  */
 export const handleSessionStorage = (type, key, value) => {
   switch (type) {
@@ -68,9 +68,80 @@ export const handleSessionStorage = (type, key, value) => {
 };
 
 /**
+ * 解析 Cookie
+ * @param {string} val: 需要解析的内容
+ * @param {string} key: 需要返回的key
+ */
+export const cookieParse = (str = false, key = false) => {
+  const pairSplitRegExp = /; */;
+  const data = str || document.cookie;
+
+  if (typeof data !== 'string') {
+    return null;
+  }
+
+  const obj = {};
+  const pairs = data.split(pairSplitRegExp);
+
+  for (let i = 0; i < pairs.length; i++) {
+    const pair = pairs[i];
+
+    let eqIdx = pair.indexOf('=');
+
+    // 跳过不像 key=value 的东西
+    if (eqIdx < 0) {
+      continue; // eslint-disable-line no-continue
+    }
+
+    const thisKey = pair.substr(0, eqIdx).trim();
+
+    let thisVal = pair.substr(eqIdx += 1, pair.length).trim();
+
+    // quoted values
+    if (thisVal[0] === '"') {
+      thisVal = thisVal.slice(1, -1);
+    }
+
+    // 只分配一次
+    if (obj[thisKey] === undefined) {
+      try {
+        obj[thisKey] = decodeURIComponent(thisVal);
+      } catch (e) {
+        obj[thisKey] = thisVal;
+      }
+    }
+  }
+
+  if (key) {
+    return obj[key];
+  }
+
+  return obj;
+};
+
+/**
+ * cookie 处理方法
+ * @param {string} type: 要做什么操作
+ * @param {string} key: 要处理的key
+ * @param {string} value: 要存的值
+ */
+export const handleCookie = (type, key) => {
+  switch (type) {
+    case 'set':
+      return null;
+    case 'get':
+      return cookieParse(document.cookie, key);
+    case 'remove':
+      return null;
+    default:
+      return null;
+  }
+};
+
+/**
  * 拆分数组
- * @param array: 要拆分的数组
- * @param num: 一组的个数
+ * @param {array} array: 要拆分的数组
+ * @param {number} num: 一组的个数
  */
 export const splitArray = (array, num = 1) => {
   const result = [];

@@ -22,6 +22,8 @@ commonConfig.globalVariable = {
   /* 接口 code 相关，可根据实际业务情况修改、增删 */
   __SUCCESS__: 0, // 成功
   __FAIL__: 400, // 失败
+  __NOTLOGGED__: 451, // 未登录
+  __ISLOGGED__: 452, // 已登录
   __TIMEOUT__: -1, // 超时
   __OFFLINE__: 600, // 网络连接失败
   __IGNORE__: 2021, // 不需处理的错误

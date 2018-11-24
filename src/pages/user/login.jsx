@@ -13,17 +13,25 @@ import {
   Button,
   Toast,
 } from 'antd-mobile';
+import md5 from 'md5';
 import styles from './styles/login.less';
 
 import Navigation from 'components/Navigation';
 
 class Login extends PureComponent {
-  constructor(props) {
-    super(props);
+  componentDidUpdate() {
+    const { dispatch, result } = this.props;
 
-    this.state = {
-      btnDisabled: false,
-    };
+    if (Object.keys(result).length > 0 && result.code !== __SUCCESS__) {
+      Toast.fail(result.message, 2, () => {
+        dispatch({
+          type: 'login/updateState',
+          payload: {
+            result: {},
+          },
+        });
+      });
+    }
   }
 
   // 提交表单
@@ -38,15 +46,13 @@ class Login extends PureComponent {
         return false;
       }
 
-      this.setState({
-        btnDisabled: true,
-      });
-
       const params = values;
+
+      params.password = md5(params.password);
 
       // 提交登录
       dispatch({
-        type: 'userLogin/submitLogin',
+        type: 'login/submitLogin',
         payload: params,
       });
     });
@@ -64,7 +70,6 @@ class Login extends PureComponent {
   render() {
     const pageTitle = '登录';
     const { form, loading } = this.props;
-    const { btnDisabled } = this.state;
     const { getFieldProps, getFieldError } = form;
 
     return (
@@ -78,7 +83,7 @@ class Login extends PureComponent {
             {...getFieldProps('username', {
               rules: [{
                 required: true,
-                message: '不能为空',
+                message: '用户名不能为空',
               }],
             })}
             placeholder="用户名"
@@ -90,7 +95,7 @@ class Login extends PureComponent {
             {...getFieldProps('password', {
               rules: [{
                 required: true,
-                message: '不能为空',
+                message: '密码不能为空',
               }],
             })}
             placeholder="密码"
@@ -104,11 +109,16 @@ class Login extends PureComponent {
           <Button
             type="primary"
             onClick={this.submit}
-            disabled={btnDisabled}
+            disabled={loading}
             loading={loading}
           >
             登录
           </Button>
+
+          <div>
+            用户名：<i>admin</i>
+            密码：<i>admin</i>
+          </div>
         </div>
       </Navigation>
     );
@@ -119,9 +129,10 @@ Login.propTypes = {
   dispatch: PropTypes.func.isRequired,
   form: PropTypes.object.isRequired,
   loading: PropTypes.bool,
+  result: PropTypes.object.isRequired,
 };
 
-export default connect(({ loading, userLogin }) => ({
-  loading: loading.effects['userLogin/submitLogin'],
-  result: userLogin.result,
+export default connect(({ loading, login }) => ({
+  loading: loading.effects['login/submitLogin'],
+  result: login.result,
 }))(createForm()(Login));

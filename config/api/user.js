@@ -3,5 +3,5 @@
  */
 
 export default {
-  login: 'user/login', // 用户登录
+  login: 'api/user/login', // 用户登录
 };

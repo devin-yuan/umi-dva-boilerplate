@@ -8,6 +8,8 @@ import commonConfig from 'config/config.common';
 import { message } from 'antd';
 import { Toast } from 'antd-mobile';
 
+axios.defaults.withCredentials = true;
+
 const fetch = (options) => {
   let {
     method = 'post', // eslint-disable-line prefer-const

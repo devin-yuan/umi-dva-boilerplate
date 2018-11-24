@@ -3,5 +3,5 @@
  */
 
 export default {
-  newsDetail: 'news/detail', // 资讯详情
+  newsDetail: 'api/news/detail', // 资讯详情
 };
