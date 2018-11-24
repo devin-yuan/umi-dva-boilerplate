@@ -1,7 +1,10 @@
+/* eslint-disable no-underscore-dangle */
+
 /**
  * 用户模块 Mock
  */
 
+import commonConfig from '../config/config.common';
 import userApi from '../config/api/user';
 import Mock from 'mockjs';
 import cookie from 'cookie';
@@ -9,20 +12,17 @@ import { delay } from 'roadhog-api-doc';
 
 const { Random, mock } = Mock;
 
+// 返回状态码
+const stateCode = commonConfig.globalVariable;
 // 报错信息
-const error = (message, code = 400) => ({
+const error = (message, code = stateCode.__FAIL__) => ({
   code,
   message: message || '发生错误',
   data: {},
 });
 
-// 登录
-const login = mock({
-  code: 0,
-  data: {},
-});
-
 const proxy = {
+  // 登录
   [`POST /${userApi.login}`]: (req, res) => {
     const { body, headers } = req;
     const cookies = cookie.parse(headers.cookie || '');
@@ -37,7 +37,10 @@ const proxy = {
       // 未登录
       if (isUsername && isPassword) {
         // 登录成功
-        result = login;
+        result = {
+          code: stateCode.__SUCCESS__,
+          data: {},
+        };
 
         /*
          * 将用户登录的token set 在 cookie 返回给客户端，用来判断用户是否登录
@@ -62,7 +65,34 @@ const proxy = {
       }
     } else {
       // 已登录
-      result = error('用户已登录', 452);
+      result = error('用户已登录', stateCode.__ISLOGGED__);
+    }
+
+    // 添加跨域请求头
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // 返回结果
+    res.status(200).json(result);
+  },
+
+  // 用户信息
+  [`GET /${userApi.info}`]: (req, res) => {
+    const { headers } = req;
+    const cookies = cookie.parse(headers.cookie || '');
+
+    let result = {};
+
+    if (cookies.userToken) {
+      // 已登录
+      result = mock({
+        code: stateCode.__SUCCESS__,
+        data: {
+          nickname: Random.cname(),
+          avatar: Random.image('228x228'),
+        },
+      });
+    } else {
+      // 未登录
+      result = error('请登录', stateCode.__NOTLOGGED__);
     }
 
     // 添加跨域请求头

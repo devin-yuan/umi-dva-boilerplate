@@ -14,7 +14,13 @@ export default {
     result: {},
   },
   subscriptions: {
-
+    setup({ dispatch, history }) {
+      history.listen(({ pathname }) => {
+        if (pathname === '/user/login') {
+          dispatch({ type: 'globalUser/checkSession' });
+        }
+      });
+    },
   },
   effects: {
     // 提交登录
