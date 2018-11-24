@@ -84,7 +84,7 @@ class NewsDetail extends PureComponent {
 
 NewsDetail.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
   result: PropTypes.object.isRequired,
 };
 

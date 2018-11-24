@@ -19,7 +19,7 @@ class DemoCharts extends PureComponent {
     super(props);
 
     this.state = {
-      tabIndex: 1,
+      tabIndex: 0,
     };
   }
 

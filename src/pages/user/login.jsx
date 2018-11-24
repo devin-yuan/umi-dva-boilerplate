@@ -1,22 +1,23 @@
 /**
- * title: 表单示例
+ * 登录
  */
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'dva';
+import { Helmet } from 'react-helmet';
+import { createForm } from 'rc-form';
 import {
-  WingBlank,
   WhiteSpace,
-  List,
   InputItem,
   Button,
   Toast,
 } from 'antd-mobile';
-import { createForm } from 'rc-form';
+import styles from './styles/login.less';
 
 import Navigation from 'components/Navigation';
 
-class DemoForm extends PureComponent {
+class Login extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -25,18 +26,11 @@ class DemoForm extends PureComponent {
     };
   }
 
-  // eslint-disable-next-line
-  static getDerivedStateFromProps(nextProps, prevState) {
-    // console.log('在这个生命周期里做提交按钮的解除禁用', nextProps, prevState);
-
-    return null;
-  }
-
   // 提交表单
   submit = (e) => {
     e.preventDefault();
 
-    const { form } = this.props;
+    const { form, dispatch } = this.props;
     const { validateFields } = form;
 
     validateFields((error, values) => {
@@ -50,18 +44,12 @@ class DemoForm extends PureComponent {
 
       const params = values;
 
-      // eslint-disable-next-line
-      console.log('要提交的值', params);
+      // 提交登录
+      dispatch({
+        type: 'userLogin/submitLogin',
+        payload: params,
+      });
     });
-  }
-
-  // 重置表单
-  reset = (e) => {
-    e.preventDefault();
-
-    const { form } = this.props;
-
-    form.resetFields();
   }
 
   // 显示错误消息
@@ -74,13 +62,18 @@ class DemoForm extends PureComponent {
   }
 
   render() {
-    const { form } = this.props;
+    const pageTitle = '登录';
+    const { form, loading } = this.props;
     const { btnDisabled } = this.state;
     const { getFieldProps, getFieldError } = form;
 
     return (
-      <Navigation title="表单示例">
-        <List>
+      <Navigation title={pageTitle}>
+        <Helmet>
+          <title>{pageTitle}</title>
+        </Helmet>
+
+        <div className={styles.wrap}>
           <InputItem
             {...getFieldProps('username', {
               rules: [{
@@ -88,12 +81,11 @@ class DemoForm extends PureComponent {
                 message: '不能为空',
               }],
             })}
-            placeholder="username"
+            placeholder="用户名"
             error={getFieldError('username') !== undefined}
             onErrorClick={() => this.showErrorMsg('username')}
-          >
-            用户名
-          </InputItem>
+          />
+
           <InputItem
             {...getFieldProps('password', {
               rules: [{
@@ -101,52 +93,35 @@ class DemoForm extends PureComponent {
                 message: '不能为空',
               }],
             })}
-            placeholder="password"
+            placeholder="密码"
             type="password"
             error={getFieldError('password') !== undefined}
             onErrorClick={() => this.showErrorMsg('password')}
-          >
-            密码
-          </InputItem>
-        </List>
-
-        <WhiteSpace />
-
-        <WingBlank>
-          <Button
-            type="primary"
-            disabled={btnDisabled}
-            onClick={this.submit}
-          >
-            登录
-          </Button>
+          />
 
           <WhiteSpace />
 
           <Button
-            type="ghost"
+            type="primary"
+            onClick={this.submit}
             disabled={btnDisabled}
-            onClick={this.reset}
+            loading={loading}
           >
-            重置
+            登录
           </Button>
-        </WingBlank>
-
-        {/* <div>
-          调用相机
-          <input type="file" accept="image/*" capture="environment" />
         </div>
-        <div>
-          调用摄像头
-          <input type="file" accept="video/*" capture="user" />
-        </div> */}
       </Navigation>
     );
   }
 }
 
-DemoForm.propTypes = {
+Login.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   form: PropTypes.object.isRequired,
+  loading: PropTypes.bool,
 };
 
-export default createForm()(DemoForm);
+export default connect(({ loading, userLogin }) => ({
+  loading: loading.effects['userLogin/submitLogin'],
+  result: userLogin.result,
+}))(createForm()(Login));

@@ -24,6 +24,16 @@ class Home extends PureComponent {
           >
             示例中心
           </Item>
+
+          <Item
+            arrow="horizontal"
+            onClick={() => {
+              router.push('/user');
+            }}
+          >
+            用户中心
+          </Item>
+
           <Item
             arrow="horizontal"
             onClick={() => {
