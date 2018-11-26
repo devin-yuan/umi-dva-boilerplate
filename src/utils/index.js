@@ -6,8 +6,8 @@ import commonConfig from 'config/config.common';
 
 /**
  * 适配rem
- * @param {number} val 需要适配的px值
- * @param {boolean} unit 是否返回带px单位的值
+ * @param {number} val: 需要适配的px值
+ * @param {boolean} unit: 是否返回带px单位的值
  */
 export const adaptRem = (val, unit = false) => {
   // 如果是移动端项目，才做适配
@@ -65,7 +65,7 @@ export const handleSessionStorage = (type, key, value) => {
 
 /**
  * 解析 Cookie
- * @param {string} val: 需要解析的内容
+ * @param {string} str: 需要解析的内容
  * @param {string} key: 需要返回的key
  */
 export const cookieParse = (str = false, key = false) => {
@@ -120,15 +120,36 @@ export const cookieParse = (str = false, key = false) => {
  * @param {string} type: 要做什么操作
  * @param {string} key: 要处理的key
  * @param {string} value: 要存的值
+ * @param {number} expireDays: 失效的天数
  */
-export const handleCookie = (type, key) => {
+export const handleCookie = (type, key, value, expireDays = null) => {
   switch (type) {
-    case 'set':
+    case 'set': {
+      let expires = '';
+
+      if (typeof expireDays === 'number') {
+        expires = new Date(Date.now() + (expireDays * 24 * 60 * 60 * 1000));
+        expires = expires.toGMTString();
+        expires = `;expires=${expires}`;
+      }
+
+      const cookieVal = `${key}=${escape(value)};path=/${expires}`;
+
+      document.cookie = cookieVal;
+
       break;
+    }
     case 'get':
       return cookieParse(document.cookie, key);
-    case 'remove':
+    case 'remove': {
+      const expires = new Date(Date.now() - 1).toGMTString();
+      const thisVal = handleCookie('get', key);
+
+      if (thisVal !== null) {
+        document.cookie = `${key}=${escape(thisVal)};path=/;expires=${expires}`;
+      }
       break;
+    }
     default:
       break;
   }
