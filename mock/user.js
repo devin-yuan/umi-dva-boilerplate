@@ -39,7 +39,10 @@ const proxy = {
         // 登录成功
         result = {
           code: stateCode.__SUCCESS__,
-          data: {},
+          data: {
+            nickname: Random.cname(),
+            avatar: Random.image('228x228'),
+          },
         };
 
         /*

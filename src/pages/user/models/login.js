@@ -31,14 +31,24 @@ export default {
   },
   effects: {
     // 提交登录
-    * submitLogin({ payload }, { call, select }) {
+    * submitLogin({ payload }, { call, put, select }) {
       const { location } = yield select(state => state.routing);
       const { query } = location;
       const response = yield call(login, payload);
-      const { code } = response;
+      const { code, data } = response;
 
       if (code === __SUCCESS__) {
         // 登录成功
+        yield put({
+          type: 'global/updateState',
+          payload: {
+            user: {
+              logged: true,
+              info: data,
+            },
+          },
+        });
+
         if (query.from) {
           // 哪来的回哪
           router.replace({

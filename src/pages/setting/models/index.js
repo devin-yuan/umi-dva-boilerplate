@@ -29,7 +29,7 @@ export default {
     * submitLogout(action, { call, put, select }) {
       const { user } = yield select(state => state.global);
 
-      if (Object.keys(user).length > 0) {
+      if (user.logged) {
         const response = yield call(logout);
         const { code } = response;
 
@@ -38,7 +38,10 @@ export default {
           yield put({
             type: 'global/updateState',
             payload: {
-              user: {},
+              user: {
+                logged: false,
+                info: {},
+              },
             },
           });
         } else {

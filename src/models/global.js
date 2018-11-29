@@ -14,7 +14,10 @@ export default {
   namespace: 'global',
   state: {
     language: localeConfig.defaultLang,
-    user: {},
+    user: {
+      logged: undefined,
+      info: {},
+    },
   },
   subscriptions: {
     // 初始化语言
@@ -50,59 +53,93 @@ export default {
      */
     * checkSession({ payload }, { select, call, put }) {
       const { user } = yield select(state => state.global);
+      const { logged } = user;
 
-      // 状态机里没有用户信息，去查询
-      if (Object.keys(user).length <= 0) {
-        const resultsLogin = yield call(userInfo);
+      let isLogged = false;
 
-        // 成功取回用户信息
-        if (resultsLogin.code === __SUCCESS__) {
-          yield put({
-            type: 'updateState',
-            payload: {
-              user: resultsLogin.data,
-            },
-          });
+      switch (logged) {
+        case true:
+          // 已登录
+          isLogged = true;
 
-          // 如果是未登录才能访问到的页面，那么跳转去用户中心
-          if (payload && payload.needLogin === false) {
+          break;
+        case false:
+          // 未登录
+          isLogged = false;
+
+          break;
+        default: {
+          // 没有登录态，去后端获取一下
+          const resultsLogin = yield call(userInfo);
+
+          if (resultsLogin.code === __SUCCESS__) {
+            // 成功取回用户信息，判断为已登录
+            yield put({
+              type: 'updateState',
+              payload: {
+                user: {
+                  logged: true,
+                  info: resultsLogin.data,
+                },
+              },
+            });
+
+            isLogged = true;
+          } else {
+            // 未成功取回用户信息，判断为未登录状态
+            yield put({
+              type: 'updateState',
+              payload: {
+                user: {
+                  logged: false,
+                  info: {},
+                },
+              },
+            });
+
+            isLogged = false;
+          }
+
+          break;
+        }
+      }
+
+      if (payload) {
+        if (payload.needLogin === true) {
+          // 需要登录才给访问
+          if (!logged) {
+            router.replace({
+              pathname: '/user/login',
+              query: {
+                from: payload.pathname,
+              },
+            });
+          } else {
+            return {
+              code: __ISLOGGED__,
+            };
+          }
+        } else {
+          // 未登录才给访问
+          if (logged) {
             router.replace({
               pathname: '/user',
             });
+          } else {
+            return {
+              code: __NOTLOGGED__,
+            };
           }
-
-          return {
-            code: __ISLOGGED__,
-          };
         }
+      }
 
-        // 如果是需要登录后才能访问的页面，那么跳转去登录页
-        if (payload && payload.needLogin === true) {
-          router.replace({
-            pathname: '/user/login',
-            query: {
-              from: payload.pathname,
-            },
-          });
+      return isLogged
+        ? {
+          code: __ISLOGGED__,
         }
-
-        // 用户信息获取失败
-        return {
+        : {
           code: __NOTLOGGED__,
         };
-      }
-
-      // 如果是未登录才能访问到的页面，那么跳转去用户中心
-      if (payload && payload.needLogin === false) {
-        router.replace({
-          pathname: '/user',
-        });
-      }
-
-      // 状态机里有用户信息，当前为登录状态
-      return {
-        code: __ISLOGGED__,
-      };
     },
   },
   reducers: {
