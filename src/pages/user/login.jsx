@@ -19,21 +19,6 @@ import styles from './styles/login.less';
 import Navigation from 'components/Navigation';
 
 class Login extends PureComponent {
-  componentDidUpdate() {
-    const { dispatch, result } = this.props;
-
-    if (Object.keys(result).length > 0 && result.code !== __SUCCESS__) {
-      Toast.fail(result.message, 2, () => {
-        dispatch({
-          type: 'login/updateState',
-          payload: {
-            result: {},
-          },
-        });
-      });
-    }
-  }
-
   // 提交表单
   submit = (e) => {
     e.preventDefault();
@@ -129,10 +114,8 @@ Login.propTypes = {
   dispatch: PropTypes.func.isRequired,
   form: PropTypes.object.isRequired,
   loading: PropTypes.bool,
-  result: PropTypes.object.isRequired,
 };
 
-export default connect(({ loading, login }) => ({
+export default connect(({ loading }) => ({
   loading: loading.effects['login/submitLogin'],
-  result: login.result,
 }))(createForm()(Login));
