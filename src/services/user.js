@@ -15,6 +15,15 @@ export const login = (params) => {
   return request(options);
 };
 
+// 注销
+export const logout = () => {
+  const options = {
+    url: apiConfig.user.logout,
+  };
+
+  return request(options);
+};
+
 // 用户信息
 export const userInfo = () => {
   const options = {

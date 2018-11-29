@@ -72,9 +72,19 @@ const fetch = (options) => {
 const request = (options) => {
   const result = fetch(options).then((response) => {
     const { data } = response;
+    const { code } = data;
 
-    // 珍藏代码
-    // console.log('看一下', window.g_app._store.dispatch); // eslint-disable-line
+    // 如果未登录
+    if (code === __NOTLOGGED__) {
+      // 清掉状态机里的用户信息
+      // eslint-disable-next-line
+      window.g_app._store.dispatch({
+        type: 'global/updateState',
+        payload: {
+          user: {},
+        },
+      });
+    }
 
     return data;
   }).catch((error) => {

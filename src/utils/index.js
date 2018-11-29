@@ -5,7 +5,7 @@
 import commonConfig from 'config/config.common';
 
 /**
- * 适配rem
+ * 适配 rem
  * @param {number} val: 需要适配的px值
  * @param {boolean} unit: 是否返回带px单位的值
  */
@@ -64,7 +64,7 @@ export const handleSessionStorage = (type, key, value) => {
 };
 
 /**
- * 解析 Cookie
+ * 解析 cookie
  * @param {string} str: 需要解析的内容
  * @param {string} key: 需要返回的key
  */

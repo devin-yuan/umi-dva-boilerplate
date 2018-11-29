@@ -74,6 +74,38 @@ const proxy = {
     res.status(200).json(result);
   },
 
+  // 注销
+  [`POST /${userApi.logout}`]: (req, res) => {
+    const { headers } = req;
+    const cookies = cookie.parse(headers.cookie || '');
+
+    let result = {};
+
+    if (cookies.userToken) {
+      // 已登录
+      result = {
+        code: stateCode.__SUCCESS__,
+        data: {},
+      };
+
+      /*
+       * 清除 cookie 中的用户 token
+       * 在真实情况下，服务端还需要在 session 中清除掉 token
+       */
+      res.clearCookie('userToken', {
+        path: '/',
+      });
+    } else {
+      // 未登录
+      result = error('用户未登录');
+    }
+
+    // 添加跨域请求头
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // 返回结果
+    res.status(200).json(result);
+  },
+
   // 用户信息
   [`GET /${userApi.info}`]: (req, res) => {
     const { headers } = req;

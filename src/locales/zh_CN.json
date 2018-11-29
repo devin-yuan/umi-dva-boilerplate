@@ -2,8 +2,12 @@
   "app.language.en_US": "英文",
   "app.language.zh_CN": "中文简体",
   "app.language.zh_TW": "中文繁体",
+  "app.components.Modal.ok": "确定",
+  "app.components.Modal.cancel": "取消",
   "app.components.NoResult.text": "没有结果",
   "app.page.setting.title": "设置",
   "app.page.setting.language.title": "切换语言",
-  "app.page.setting.language.time": "当前时间：{time}"
+  "app.page.setting.language.time": "当前时间：{time}",
+  "app.page.setting.logout.title": "注销",
+  "app.page.setting.logout.Modal.message": "确认注销？"
 }
