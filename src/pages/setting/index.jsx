@@ -46,7 +46,7 @@ class Setting extends PureComponent {
             {intl.get('app.page.setting.language.title')}
           </Item>
           {
-            Object.keys(user).length > 0
+            user.logged
               ? (
                 <Item
                   arrow="horizontal"
