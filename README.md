@@ -2,6 +2,8 @@
 
 基于 [UmiJS](https://umijs.org/) 和 [DvaJS](https://dvajs.com/) 搭建的客户端渲染 - 通用脚手架
 
+从项目搭建，到一些常规的业务代码示例
+
 ## 中间件
 
 **dependencies**

@@ -57,6 +57,7 @@ export default {
 
       let isLogged = false;
 
+      // 判断登录状态
       switch (logged) {
         case true:
           // 已登录
@@ -104,6 +105,7 @@ export default {
         }
       }
 
+      // 判断页面权限
       if (payload) {
         if (payload.needLogin === true) {
           // 需要登录才给访问

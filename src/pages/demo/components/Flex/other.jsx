@@ -21,7 +21,7 @@ export default () => {
     <div>
       <h3>其他</h3>
 
-      <Tabs tabs={tabs}>
+      <Tabs tabs={tabs} tabBarBackgroundColor="transparent">
         <div className={styles.itemBox}>
           <div className={styles.item} data-flex="">
             <div data-flex-box="0">1</div>

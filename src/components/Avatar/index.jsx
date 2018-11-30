@@ -42,6 +42,7 @@ const Avatar = ({
 Avatar.propTypes = {
   url: PropTypes.string,
   href: PropTypes.string,
+  size: PropTypes.string,
   square: PropTypes.bool,
   style: PropTypes.object,
 };

@@ -19,7 +19,7 @@ export default () => {
     <div>
       <h3>交叉轴对齐方式</h3>
 
-      <Tabs tabs={tabs} swipeable={false}>
+      <Tabs tabs={tabs} swipeable={false} tabBarBackgroundColor="transparent">
         <div className={styles.itemBox}>
           <div className={styles.item} data-flex="cross:top">
             <div>

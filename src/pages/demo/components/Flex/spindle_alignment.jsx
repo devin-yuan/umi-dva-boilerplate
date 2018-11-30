@@ -18,7 +18,7 @@ export default () => {
     <div>
       <h3>主轴对齐方式</h3>
 
-      <Tabs tabs={tabs} swipeable={false}>
+      <Tabs tabs={tabs} swipeable={false} tabBarBackgroundColor="transparent">
         <div className={styles.itemBox}>
           <div className={styles.item} data-flex="main:right">
             <div>1</div>
