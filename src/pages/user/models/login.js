@@ -44,7 +44,7 @@ export default {
           payload: {
             user: {
               logged: true,
-              info: data,
+              info: data, // 如果登录接口不返回用户信息的话，需要自己再去调用一下用户信息接口
             },
           },
         });

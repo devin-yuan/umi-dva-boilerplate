@@ -18,7 +18,7 @@ export default () => {
     <div>
       <h3>子元素高度设置</h3>
 
-      <Tabs tabs={tabs}>
+      <Tabs tabs={tabs} tabBarBackgroundColor="transparent">
         <div className={styles.itemBox}>
           <div className={styles.item} data-flex="dir:top box:mean">
             <div>1</div>

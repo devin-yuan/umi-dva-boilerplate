@@ -1,0 +1,34 @@
+/**
+ * 用户中心 样式
+ */
+
+@import "../../../styles/theme.less";
+
+.userInfoBox {
+  padding: (30 * @hd) @h-spacing-lg;
+
+  :global {
+    .boilerplate-avatar {
+      .square(76 * @hd);
+    }
+  }
+
+  .nickname {
+    display: inline-block;
+    margin-top: 24 * @hd;
+    margin-left: @h-spacing-lg;
+    width: 100%;
+    font-size: 24 * @hd;
+    font-style: normal;
+    color: @color-text-base-inverse;
+    .text-overflow();
+  }
+
+  & > :last-child {
+    :global {
+      .boilerplate-loading {
+        margin-top: 15 * @hd;
+      }
+    }
+  }
+}

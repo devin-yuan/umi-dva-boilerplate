@@ -81,7 +81,10 @@ const request = (options) => {
       window.g_app._store.dispatch({
         type: 'global/updateState',
         payload: {
-          user: {},
+          user: {
+            logged: false,
+            info: {},
+          },
         },
       });
     }

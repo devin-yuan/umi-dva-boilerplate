@@ -17,6 +17,10 @@ export default {
               pathname,
               needLogin: true, // 该页面是否需要登录才能访问
             },
+          }).then((res) => {
+            if (res.code === __ISLOGGED__) {
+              console.log('可以去拉一些用户相关的信息了'); // eslint-disable-line
+            }
           });
         }
       });
